@@ -1,0 +1,79 @@
+<blockquote>
+    Learn more about these HTL attributes in the 
+    <a href="https://github.com/Adobe-Marketing-Cloud/htl-spec/blob/master/SPECIFICATION.md">HTL specification</a> <br/>
+</blockquote>
+<h3>My Quote Component</h3>
+
+<!--/* Tests to see if the author added a quote into the dialog */-->
+<!--/* Save a value in a variable */-->
+<!--/* Change HTML element type dynamically */-->
+<div 
+	data-sly-set.phrase="${properties.myQuote}"
+	data-sly-element="blockquote"
+	data-sly-test="${phrase}">
+	${phrase}
+</div>
+
+<!--/* Reuse defined variables throughout the HTL */-->
+<p data-sly-test="${phrase}">― Pablo Picasso</p>
+
+<h3>My Quote Component with Default content</h3>
+
+<!--/* Tests, if the author added a quote, otherwise provides a default */-->
+<!--/* data-sly-text sets the element value */-->
+<!--/* data-sly-attribute only is printed, if a attribute value exists */-->
+<blockquote
+    data-sly-text="${properties.myQuote ? properties.myQuote : 'No quote specified' }"
+    data-sly-attribute.cite="${properties.cite}">
+        Dummy text, which will be overwritten by data-sly-text
+</blockquote>
+ <!--/* Dummy text is not required when using data-sly-text */-->
+<p data-sly-text="${quotee ? quotee : '- Who said this quote' }"></p>
+
+<h4>Learn more about these HTL attributes in the 
+    <a href="https://github.com/Adobe-Marketing-Cloud/htl-spec/blob/master/SPECIFICATION.md">HTL specification</a></h4>
+<h3>The examples below use the path ${currentNode.path}</h3>
+<h4>Ex 1: Properties of the ${currentNode.name} Component</h4>
+    In this example we use the <b>properties</b> object and <b>data-sly-list</b> attribute to show ValueMap and it's values
+    Learn more about the <a href="https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/org/apache/sling/api/resource/ValueMap.html">ValueMap API</a> used for the <b>properties</b> object
+<ul data-sly-list=${properties}>
+	<li>
+      ${item}: ${properties[item]}
+    </li>
+</ul>
+<h4>Ex 2: Sibling Nodes (other components) of the ${currentNode.name} node</h4>
+    In this example we use the <b>currentNode</b> object and <b>data-sly-list</b> and <b>data-sly-test</b> attributes to view sibling nodes <br/>
+    Learn more about the <a href="https://docs.adobe.com/docs/en/spec/jsr170/javadocs/jcr-2.0/javax/jcr/Node.html">Node API</a>
+<ul data-sly-list=${currentNode.parent.nodes}>
+	<li data-sly-test="${item.name != currentNode.name}">
+      ${item.name}
+    </li>
+</ul>
+<h4>Ex 3: Sibling resources (other components) of the ${resource.name} node</h4>
+    This is the same as Ex 3 except we use the <b>resource</b> object instead <br/>
+    Learn more about the <a href="https://sling.apache.org/apidocs/sling7/org/apache/sling/api/resource/Resource.html">Resource API</a>
+<ul data-sly-list=${resource.parent.listChildren}>
+	<li data-sly-test="${item.name != resource.name}">
+      ${item.name}
+    </li>
+</ul>
+
+<sly data-sly-use.rootSitePage="${currentPage.parent.parent.parent.path}" />
+<h3>The examples below use ${rootSitePage.path}<br/></h3>
+<h4>Ex 4: Child resources of ${rootSitePage.name}</h4>
+	In this example we use <b>data-sly-list</b> attribute to view the child resources
+<ul data-sly-list=${rootSitePage.listChildren}>
+	<li >
+      ${item.name}
+    </li>
+</ul>
+
+<h4 data-sly-use.jcrContent="${rootSitePage.path}/jcr:content">Ex 5: Child Pages of ${jcrContent.jcr:title}</h4>
+    In this example we use <b>data-sly-list, data-sly-test,</b> and <b>data-sly-use</b> attributes to
+	get the page title from the jcr:title property under the jcr:content node of each valid page
+<ul data-sly-list=${rootSitePage.listChildren}>
+	<li data-sly-test="${item.resourceType.toString == 'cq:Page'}">
+      <a data-sly-use.childJcrContent="${item.path}/jcr:content" 
+      		href="${item.path @ extension='html'}">${childJcrContent.jcr:title}</a>
+    </li>
+</ul>

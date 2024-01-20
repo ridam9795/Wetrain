@@ -1,0 +1,16 @@
+{
+  "Summary:": "Sommario:",
+  "Current Value:": "Valore corrente:",
+  "Headless JSON View": "Vista JSON senza testa",
+  "52 Week Low": "Minimo 52 Settimane",
+  "52 Week High": "Massimo 52 Settimane",
+  "Sector": "Settore",
+  "Company": "Azienda",
+  "Volume": "Volume",
+  "Range Low": "Gamma Bassa",
+  "Range High": "Gamma Alta",
+  "Open Price": "Prezzo Aperto",
+  "Up/Down": "Su/Giù",
+  "Request Time": "Ora Richiesta",
+  "Request Date": "Data Richiesta"
+}

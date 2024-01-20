@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/wetrain/clientlibs"/>
+    <filter root="/apps/wetrain/components"/>
+    <filter root="/apps/wetrain/i18n"/>
+    <filter root="/apps/sling" />
+    <filter root="/apps/msm/wetrain_blueprint" mode="merge"/>
+</workspaceFilter>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/conf/wetrain" mode="merge"/>
+    <filter root="/content/wetrain" mode="merge"/>
+    <filter root="/content/dam/wetrain" mode="merge">
+        <exclude pattern="/content/dam/wetrain(/.*)?"/>
+        <include pattern="/content/dam/wetrain/jcr:content(/.*)?"/>
+    </filter>
+    <filter root="/content/dam/wetrain/asset.jpg" mode="merge"/>
+    <filter root="/content/experience-fragments/wetrain" mode="merge"/>
+</workspaceFilter>

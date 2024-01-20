@@ -1,0 +1,40 @@
+$hero-height: 400px;
+$hero-content-bottom: $hero-height * .35;
+$hero-content-width: 70%;
+$hero-content-left: (100-$hero-content-width) / 2;
+
+.cmp-hero {
+    position: relative;
+    max-height: $hero-height;
+    overflow: hidden;
+    margin: 1px;
+    .cmp-hero__image {
+        filter: blur(1px);
+        width: 100%;
+    }
+    .cmp-hero__content{
+        position: absolute;
+        bottom: $hero-content-bottom;
+        color: #fff;
+        width: $hero-content-width;
+        left: $hero-content-left;
+        text-align: center;
+        .cmp-hero__link a {
+            color: #fff;
+            border: 1px solid #fff;
+            padding: 1em;
+            text-decoration: none;
+            background-color: transparent;
+            -webkit-transition: all .25s ease-out;
+            -moz-transition: all .25s ease-out;
+            -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+        }
+        .cmp-hero__link:hover a{
+            background-color: #ffea00;
+            border: 1px solid #000; 
+            color: #000;
+        }
+    }
+    
+}

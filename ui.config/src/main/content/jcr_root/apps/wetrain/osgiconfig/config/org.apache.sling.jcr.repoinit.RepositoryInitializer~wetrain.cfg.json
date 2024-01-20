@@ -1,0 +1,7 @@
+{
+    "scripts": [
+        "create path (sling:OrderedFolder) /content/dam/wetrain",
+        "create path (nt:unstructured) /content/dam/wetrain/jcr:content",
+        "set properties on /content/dam/wetrain/jcr:content\n  set cq:conf{String} to /conf/wetrain\n  set jcr:title{String} to \"We.Train\"\nend"
+    ]
+}

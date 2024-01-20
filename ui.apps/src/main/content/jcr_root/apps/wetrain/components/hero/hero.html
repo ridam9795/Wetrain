@@ -1,0 +1,23 @@
+<!--/* This Hero component is extended from the Core Image component. 
+    When testing a dialog and it's values, you can use the global
+    object called 'properties' to quickly pull out values persisted
+    by an authoring dialog.
+    */-->
+    <div data-sly-use.template="core/wcm/components/commons/v1/templates.html" 
+    data-sly-test.hasContent="${properties.fileReference}"
+    class="cmp-hero">
+
+    <!--/* Display the hero image */-->	
+    <img class="cmp-hero__image" src="${properties.fileReference}"/>
+
+    <!--/* Display a hero title and optional call to action link */-->
+    <div class="cmp-hero__content">
+        <h1 class="cmp-hero__title">${properties.heroTitle}</h1>
+        <div class="cmp-hero__link" data-sly-test="${properties.linkText}">
+            <a href="${properties.linkURL}">${properties.linkText}</a>
+        </div>
+    </div>
+</div>
+
+<!--/* If there is no content entered into the dialog, show a placeholder. */-->
+<sly data-sly-call="${template.placeholder @ isEmpty=!hasContent, classAppend='cmp-hero'}"></sly>

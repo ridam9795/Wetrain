@@ -1,0 +1,39 @@
+<!--/* When writing HTL, you may need to include static langauge.
+    Static language could be things like labels, button text, and other
+    text pieces controlled by the developer in the HTL. Using ${'English text' @ i18n}
+    you can quickly target the static language with i18n nodes for translation.
+    */-->
+    <div data-sly-use.template="core/wcm/components/commons/v1/templates.html" 
+    data-sly-test.hasContent="${properties.symbol}" 
+    class="cmp-stockplex">
+
+    <div class="cmp-stockplex__column1">
+        <div class="cmp-stockplex__symbol">${properties.symbol}</div>
+        <div class="cmp-stockplex__currentPrice">${'Current Value:' @ i18n} ${properties.currentPrice}</div>
+
+
+        <div class="cmp-stockplex__summary" data-sly-test.summary="${properties.summary}">
+            <h3>${'Summary:' @ i18n} ${properties.summary}</h3>
+        </div>
+
+        <div class="cmp-stockplex__button">
+            <a href="#">
+                <button>Placeholder</button>
+            </a>
+        </div>
+    </div>
+    <div class="cmp-stockplex__column2">
+        <div class="cmp-stockplex__details" data-sly-test="${currentStyle.showStockInfo}">
+            <ul data-sly-list.sInfo="${['Request Date','Open Price', 'Range High', 'Range Low', 'Close', 'Volume']}">
+                <li class="cmp-stockplex__details-item">
+                    <span class="cmp-stockplex__details-title">${sInfo @ i18n}: </span>
+                    <br />
+                    <span class="cmp-stockplex__details-data">Value</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- If there is no stock symbol added to the dialog, create a component placeholder -->
+<sly data-sly-call="${template.placeholder @ isEmpty=!hasContent, classAppend='cmp-stockplex'}"></sly>
